@@ -1,3 +1,3 @@
-module github.com/JohnVicke/cmd/helloworld
+module github.com/JohnVicke/klask-backend/cmd/helloworld
 
 go 1.13
