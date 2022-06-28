@@ -32,13 +32,8 @@ jobs:
       - name: Run staticcheck
         run: staticcheck ./...
 
-      - name: Install golint
-        run: |
-          go version
-          go get -u golang.org/x/lint/golint
-
-      - name: Go lint
-        run: golint ./..
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v3.2.0
 
       - name: Run tests
         run: go test -race -vet=off github.com/JohnVicke/klask-backend/...

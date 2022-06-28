@@ -11,6 +11,7 @@ then
 
   export GOOGLE_APPLICATION_CREDENTIALS=$googleCredentialsPath
   cd cmd
+
   for d in */
   do
     echo "Adding replace to $d"
