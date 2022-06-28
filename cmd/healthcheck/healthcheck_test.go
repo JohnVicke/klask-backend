@@ -19,5 +19,5 @@ func TestHealthCheck(t *testing.T) {
 	handler := http.HandlerFunc(HealthCheck)
 	handler.ServeHTTP(rr, req)
 
-	assert.Equal(t, http.StatusOK, rr.Code)
+	assert.Equal(t, http.StatusNotFound, rr.Code)
 }
