@@ -23,7 +23,7 @@ jobs:
 
       - name: "echo"
         shell: bash
-        run: ./ci/deploy.sh ${steps.filter.outputs.cmd_list}
+        run: ./ci/deploy.sh ${{ steps.filter.outputs.cmd_list }}
 
       - name: "echo2"
         shell: bash
