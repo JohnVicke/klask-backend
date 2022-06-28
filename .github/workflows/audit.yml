@@ -34,7 +34,6 @@ jobs:
 
       - name: Lint using golangci-lint
         uses: golangci/golangci-lint-action@v3
-        run: golint ./...
 
       - name: Run tests
         run: go test -race vet=off ./...
