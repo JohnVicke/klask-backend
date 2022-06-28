@@ -49,6 +49,7 @@ jobs:
           version: latest
 
   deploy:
+    needs: [audit, lint]
     name: deploy
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
