@@ -6,7 +6,7 @@ on:
 
 jobs:
   deployment:
-    name: deploy
+    name: verify-changes
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -22,10 +22,11 @@ jobs:
               - 'filtertest/**'
 
   deploy-to-cloud:
+    needs: verify-changes
+    if: ${{ steps.filter.outputs.cmd == 'true' }}
     name: deploy to gcloud
     runs-on: ubuntu-latest
     environment: prod
-    if: ${{ steps.filter.outputs.cmd == 'true' }}
     steps:
       #- name: Setup gcloud actions
       #uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
