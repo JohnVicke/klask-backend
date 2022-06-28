@@ -18,11 +18,10 @@ jobs:
           filters: |
             cmd:
               - 'filtertest/**'
+
       - name: "echo"
         shell: bash
-        run: |
-          echo ${GITHUB_WORKSPACE}
-          echo ${{ steps.filter.outputs.cmd_files }}
+        run: ./ci/deploy.sh ${{ steps.filter.outputs.cmd_list }}
 
       - name: "echo2"
         shell: bash
