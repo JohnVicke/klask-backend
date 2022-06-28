@@ -10,14 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
+      - uses: actions/checkout@v3
       - uses: dorny/paths-filter@v2
-        id: changes
+        id: filter
         with:
           list-files: "shell"
           filters: |
             cmd:
               - 'filtertest/**'
-      - uses: actions/checkout@v3
+
       - name: "echo"
         shell: bash
         run: |
