@@ -10,9 +10,17 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          list-files: "shell"
+          filters: |
+            cmd:
+              - 'filtertest/**'
       - uses: actions/checkout@v3
       - name: "echo"
         shell: bash
         run: |
           echo ${GITHUB_WORKSPACE}
+          echo ${cmd}_files
           echo "should not run"
