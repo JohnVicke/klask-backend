@@ -23,5 +23,4 @@ jobs:
         shell: bash
         run: |
           echo ${GITHUB_WORKSPACE}
-          echo ${cmd}_files
-          echo "should not run"
+          echo ${steps.filter.outputs.cmd_files}
