@@ -21,7 +21,18 @@ jobs:
             cmd:
               - 'filtertest/**'
 
-      - name: "echo"
+  deploy-to-cloud:
+    name: deploy to gcloud
+    runs-on: ubuntu-latest
+    environment: prod
+    if: ${{ steps.filter.outputs.cmd == 'true' }}
+    steps:
+      #- name: Setup gcloud actions
+      #uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      #with:
+      #service_account_key: ${{ secrets.PROD_GCLOUD_AUTH }}
+      #project_id: ${{ secrets.PROD_GCP_PROJECT_ID }}
+
+      - name: Deploy modified functions
         shell: bash
-        if: ${{ steps.filter.outputs.cmd == 'true' }}
         run: ./ci/deploy.sh ${{ steps.filter.outputs.cmd_files }}
