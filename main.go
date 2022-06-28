@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -19,9 +18,8 @@ func main() {
 	}
 
 
-	if err:= funcframework.Start(port); err != nil {
+	if err := funcframework.Start(port); err != nil {
 		log.Fatalf("funcframework.Start: %v\n", err)
 	}
 
-	fmt.Printf("Listening on port %s\n", port)
 }
