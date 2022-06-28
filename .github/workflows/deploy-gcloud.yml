@@ -25,5 +25,7 @@ jobs:
         shell: bash
         run: |
           for c_d in ${{ steps.filter.outputs.cmd_files }}; do
-            echo ${c_d}
+            echo file changed: ${c_d}
           done
+
+          ./ci/deploy.sh ${{ steps.filter.outputs.cmd_files }}
