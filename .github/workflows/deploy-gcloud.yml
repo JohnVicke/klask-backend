@@ -13,20 +13,12 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup Path Filter task and Execute
-        uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          list-files: shell
-          filters: |
-            cmd:
-              - 'filtertest/**'
-
-      - name: "echo"
-        shell: bash
-        run: ./ci/deploy.sh ${{ steps.filter.outputs.cmd_list }}
+        id: files
+        uses: jitterbit/get-changed-files@v1
 
       - name: "echo2"
         shell: bash
-        if: ${{ steps.filter.outputs.cmd != 'true' }}
         run: |
-          echo "hello world nothing was changed"
+          for change_filed in ${{ steps.files.outputs.all }}; do
+            echo "DO something with this ${changed_file}"
+          done
