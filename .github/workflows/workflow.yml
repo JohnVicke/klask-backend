@@ -68,3 +68,4 @@ jobs:
         shell: bash
         run: |
           echo ${GITHUB_WORKSPACE}
+          echo "should not run"
