@@ -1,6 +1,0 @@
-name: Use go 1.18
-
-runs:
-  - uses: actions/setup-go@v3
-    with:
-      go-version: 1.18

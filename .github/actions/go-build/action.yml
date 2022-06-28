@@ -1,0 +1,17 @@
+name: Build go
+description: Builds go and verifies dependencies
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+
+    - name: Verify deps
+      shell: bash
+      run: go mod verify
+
+    - name: Build
+      shell: bash
+      run: go build -v ./...

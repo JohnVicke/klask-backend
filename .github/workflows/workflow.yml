@@ -11,15 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-go@v3
-        with:
-          go-version: 1.18
-
-      - name: Verify deps
-        run: go mod verify
-
-      - name: Build
-        run: go build -v ./...
+      - uses: actions/go-build
 
   vet:
     runs-on: ubuntu-latest
