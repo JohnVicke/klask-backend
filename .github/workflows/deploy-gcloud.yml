@@ -11,6 +11,8 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v3
+
+      - name: Setup Path Filter task and Execute
       - uses: dorny/paths-filter@v2
         id: filter
         with:
@@ -21,10 +23,10 @@ jobs:
 
       - name: "echo"
         shell: bash
-        run: ./ci/deploy.sh ${{ steps.filter.outputs.cmd_list }}
+        run: ./ci/deploy.sh ${steps.filter.outputs.cmd_list}
 
       - name: "echo2"
         shell: bash
-        if: steps.filter.outputs.cmd == 'true'
+        if: ${{ steps.filter.outputs.cmd != 'true' }}
         run: |
           echo "hello world nothing was changed"
