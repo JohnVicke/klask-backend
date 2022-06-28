@@ -32,10 +32,8 @@ jobs:
       - name: Run staticcheck
         run: staticcheck ./...
 
-      - name: Install golint
-        run: go install golang.org/x/lint/golint/@latest
-
-      - name: golint
+      - name: Lint using golangci-lint
+        uses: golangci/golangci-lint-action@v3
         run: golint ./...
 
       - name: Run tests
