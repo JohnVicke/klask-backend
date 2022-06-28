@@ -24,6 +24,6 @@ jobs:
       - name: "echo"
         shell: bash
         run: |
-          for cd in ${{ steps.filter.outputs.cmd_list }}; do
-            echo ${cd}
+          for c_d in ${{ steps.filter.outputs.cmd_files }}; do
+            echo ${c_d}
           done
