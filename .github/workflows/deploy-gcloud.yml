@@ -14,13 +14,18 @@ jobs:
       - uses: dorny/paths-filter@v2
         id: filter
         with:
-          list-files: "shell"
+          list-files: shell
           filters: |
             cmd:
               - 'filtertest/**'
-
       - name: "echo"
         shell: bash
         run: |
           echo ${GITHUB_WORKSPACE}
-          echo ${steps.filter.outputs.cmd_files}
+          echo ${{ steps.filter.outputs.cmd_files }}
+
+      - name: "echo2"
+        shell: bash
+        if: ${{ steps.filter.outputs.cmd }}
+        run: |
+          echo ${outputs.cmd}
