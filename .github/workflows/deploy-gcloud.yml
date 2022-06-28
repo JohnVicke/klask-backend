@@ -23,9 +23,5 @@ jobs:
 
       - name: "echo"
         shell: bash
-        run: |
-          for c_d in ${{ steps.filter.outputs.cmd_files }}; do
-            echo file changed: ${c_d}
-          done
-
-          ./ci/deploy.sh ${{ steps.filter.outputs.cmd_files }}
+        if: ${{ steps.filter.outputs.cmd == 'true' }}
+        run: ./ci/deploy.sh ${{ steps.filter.outputs.cmd_files }}

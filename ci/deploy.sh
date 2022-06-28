@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
-echo "$@"
+files=("$@")
 
-args=("$@")
-
-echo Number of arguments: $#
-echo 1st argument: ${args[0]}
-echo 2nd argument: ${args[1]}
+# loop over files
+for file in "${files[@]}"
+do
+  echo "Verifying version $file"
+  # deploy file
+  # ...
+done
