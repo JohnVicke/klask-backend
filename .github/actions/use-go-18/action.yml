@@ -1,0 +1,9 @@
+name: Bundle go 18 setup
+description: Use setup-go@v3 for go 1.18
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
