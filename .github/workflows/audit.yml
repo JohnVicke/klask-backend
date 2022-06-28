@@ -32,8 +32,10 @@ jobs:
       - name: Run staticcheck
         run: staticcheck ./...
 
-      - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v3.2.0
-
       - name: Run tests
         run: go test -race -vet=off github.com/JohnVicke/klask-backend/...
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run golangci-lint
+        uses: golangci/golangci-lint-action@v3.2.0
