@@ -25,6 +25,6 @@ jobs:
 
       - name: "echo2"
         shell: bash
-        if: ${{ steps.filter.outputs.cmd == 'true'}}
+        if: steps.filter.outputs.cmd == 'true'
         run: |
-          echo ${outputs.cmd}
+          echo "hello world nothing was changed"
