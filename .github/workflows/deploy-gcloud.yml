@@ -8,6 +8,10 @@ jobs:
   changes:
     name: changes
     runs-on: ubuntu-latest
+    outputs:
+      cmd: ${{ steps.filter.outputs.cmd }}
+      cmd_files: ${{ steps.filter.outputs.cmd_files }}
+
     steps:
       - uses: actions/checkout@v3
 
@@ -34,4 +38,4 @@ jobs:
 
       - name: Deploy modified functions
         shell: bash
-        run: ./ci/deploy.sh ${{ steps.filter.outputs.cmd_files }}
+        run: ./ci/deploy.sh ${{ needs.changes.outputs.cmd_files }}
