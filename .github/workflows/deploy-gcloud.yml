@@ -30,7 +30,7 @@ jobs:
 
   check-pkg-dependancies:
     needs: changes
-    if: ${{ needs.changes.outputs.pkg == 'true' }}
+    if: ${{ needs.changes.outputs.pkg == 'false' }}
     name: Check dependancies
     runs-on: ubuntu-latest
     steps:
