@@ -28,20 +28,20 @@ jobs:
             cmd:
               - 'filtertest/**'
 
-  check-pkg-dependancies:
-    needs: changes
-    if: ${{ needs.changes.outputs.pkg == 'false' }}
-    name: Check dependancies
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Verify dependancy versions
-        env:
-          TEST: ${{ secrets.TEST }}
-        shell: bash
-        run: |
-          echo "hello world pkg update"
-          echo $TEST
+  # check-pkg-dependancies:
+  #   needs: changes
+  #   if: ${{ needs.changes.outputs.pkg == 'false' }}
+  #   name: Check dependancies
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Verify dependancy versions
+  #       env:
+  #         TEST: ${{ secrets.TEST }}
+  #       shell: bash
+  #       run: |
+  #         echo "hello world pkg update"
+  #         echo $TEST
 
   deploy-to-cloud:
     needs: changes
