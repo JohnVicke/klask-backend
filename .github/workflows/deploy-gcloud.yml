@@ -11,6 +11,8 @@ jobs:
     outputs:
       cmd: ${{ steps.filter.outputs.cmd }}
       cmd_files: ${{ steps.filter.outputs.cmd_files }}
+      pkg: ${{ steps.filter.outputs.pkg }}
+      pkg_files: ${{ steps.filter.outputs.pkg_files }}
 
     steps:
       - uses: actions/checkout@v3
@@ -21,8 +23,25 @@ jobs:
         with:
           list-files: shell
           filters: |
+            pkg:
+              - 'pkg/**'
             cmd:
               - 'filtertest/**'
+
+  check-pkg-dependancies:
+    needs: changes
+    if: ${{ needs.changes.outputs.pkg == 'true' }}
+    name: Check dependancies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Verify dependancy versions
+        env:
+          TEST: ${{ secrets.TEST }}
+        shell: bash
+        run: |
+          echo "hello world pkg update"
+          echo $TEST
 
   deploy-to-cloud:
     needs: changes

@@ -6,6 +6,7 @@ type FirestoreUser struct {
 	ID string `firestore:"id" json:"id"`
 	DisplayName string `firestore:"displayName" json:"displayName"`
 	Username string `firestore:"username" json:"username"`
+	UpdatedAt string `firestore:"updatedAt" json:"updatedAt"`
 }
 
 // APIToken is the Firebase API token.
