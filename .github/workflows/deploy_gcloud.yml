@@ -2,7 +2,8 @@ name: Deploy to gcloud
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
 
 jobs:
   changes:
@@ -13,10 +14,8 @@ jobs:
       cmd_files: ${{ steps.filter.outputs.cmd_files }}
       pkg: ${{ steps.filter.outputs.pkg }}
       pkg_files: ${{ steps.filter.outputs.pkg_files }}
-
     steps:
       - uses: actions/checkout@v3
-
       - name: Setup Path Filter task and Execute
         uses: dorny/paths-filter@v2
         id: filter
@@ -28,20 +27,20 @@ jobs:
             cmd:
               - 'filtertest/**'
 
-  # check-pkg-dependancies:
-  #   needs: changes
-  #   if: ${{ needs.changes.outputs.pkg == 'false' }}
-  #   name: Check dependancies
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #     - name: Verify dependancy versions
-  #       env:
-  #         TEST: ${{ secrets.TEST }}
-  #       shell: bash
-  #       run: |
-  #         echo "hello world pkg update"
-  #         echo $TEST
+  check-pkg-dependancies:
+    needs: changes
+    if: ${{ needs.changes.outputs.pkg == 'false' }}
+    name: Check dependancies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Verify dependancy versions
+        env:
+          TEST: ${{ secrets.TEST }}
+        shell: bash
+        run: |
+          echo "hello world pkg update"
+          echo $TEST
 
   deploy-to-cloud:
     needs: changes
