@@ -43,7 +43,7 @@ jobs:
           echo $TEST
 
   deploy-to-cloud:
-    needs: changes
+    needs: [changes, check-pkg-dependancies]
     if: ${{ needs.changes.outputs.cmd == 'true' }}
     name: deploy to gcloud
     runs-on: ubuntu-latest
