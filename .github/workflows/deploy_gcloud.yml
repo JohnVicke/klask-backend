@@ -1,4 +1,4 @@
-name: deploy to gcloud
+name: Deploy to gcloud
 
 on:
   push:
