@@ -1,5 +1,26 @@
-# Klask backend - gcloud GO Serverless
+<h1 align="center">Klask-Backend</h1>
+<p align="center">Digital leaderboard for <a href="https://second.wiki/wiki/klask">klask</a> hosted in the clouds! ☁ </p>
 
----
+<p align="center">
+  <a href="https://discord.gg/bUmZ3Av6">
+    <img src="https://img.shields.io/discord/992060932257763358?style=for-the-badge" alt="discord" />
+  </a>
+    <a href="https://github.com/JohnVicke/klask-backend/issues">
+        <img alt="GitHub issues" src="https://img.shields.io/github/issues/JohnVicke/klask-backend?style=for-the-badge">
+  </a>
+</p>
 
-update this...
+<h3 align="center">
+  <a href="https://github.com/johnvicke/klask-backend/update-this>Contributing</a>
+  <span> · </span>
+  <a href="https://github.com/johnvicke/klask-backend/update-this">Documentation</a>
+</h3>
+
+## Structure
+
+| Codebase              |      Description                           |
+| :-------------------- | :-----------------------:                  |
+| [backend](backend)    | GO gcloud Serverless Functions in Firebase |
+| [app](app)            | React Native App                           |
+| [web](web)            | Svelte "Game interface"                    |
+
