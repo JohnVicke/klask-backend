@@ -37,8 +37,8 @@ jobs:
         shell: bash
         run: |
           echo "hello world pkg update"
-          echo "cmd: ${{ steps.filter.outputs.cmd }}"
-          echo "pkg: ${{ steps.filter.outputs.pkg }}"
+          echo "cmd: ${{ needs.changes.outputs.cmd }}"
+          echo "pkg: ${{ needs.changes.outputs.pkg }}"
 
   deploy-to-cloud:
     needs: [changes, check-pkg-dependancies]
