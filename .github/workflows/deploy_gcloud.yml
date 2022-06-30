@@ -41,7 +41,7 @@ jobs:
 
   deploy-to-cloud:
     needs: [changes, check-pkg-dependancies]
-    if: ${{ needs.changes.outputs.cmd != 'true' }}
+    if: ${{ needs.changes.outputs.cmd == 'true' }}
     name: deploy to gcloud
     runs-on: ubuntu-latest
     steps:
