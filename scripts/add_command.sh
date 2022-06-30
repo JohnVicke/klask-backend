@@ -34,6 +34,8 @@ cd ./cmd && mkdir $dir_name && cd $dir_name
 
 go mod init github.com/JohnVicke/cmd/$dir_name
 go get github.com/stretchr/testify/assert
+go get -u
+go mod tidy
 
 echo "package $dir_name" >> $dir_name.go
 
