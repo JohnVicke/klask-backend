@@ -4,11 +4,11 @@ echo "Using shell: $SHELL"
 
 files=("$@")
 
-VAR1=hello
+VERSION=1.0.0
 
 env_vars_array=(
   "VAR1=${VAR1}" 
-  "VAR2=${VAR1}"
+  "name=${VERSION}"
 )
 
 # TODO: Filter for main .go file
