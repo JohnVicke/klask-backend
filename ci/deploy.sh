@@ -17,14 +17,13 @@ env_vars=${joined%,}
 for file in "${files[@]}"
 do
   entry_point="$(grep -oP '(?<=func )\w+' $file)"
-  name=${func_name,}
+  name=${entry_point,}
 
   echo "Deploying function $entry_point to gcloud..."
 
   gcloud functions deploy $name \
     --entry-point $entry_point \
     --set-env-vars $env_vars \
-    --region europe-north1-a \
     --runtime go113 \
     --allow-unauthenticated \
     --verbosity debug \
