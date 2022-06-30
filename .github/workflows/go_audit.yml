@@ -3,7 +3,6 @@ name: GO Audit
 on:
   pull_request:
     branches: [master]
-    types: [labeled, reopened, synchronize, ready_for_review]
 
 jobs:
   build:
