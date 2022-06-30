@@ -4,8 +4,7 @@ go 1.18
 
 require (
 	github.com/GoogleCloudPlatform/functions-framework-go v1.5.3
-	github.com/JohnVicke/klask-backend/cmd/healthcheck v0.0.0-00010101000000-000000000000
-	github.com/JohnVicke/klask-backend/cmd/helloworld v0.0.0-20220628062030-8b500e2459f9
+	github.com/JohnVicke/klask-backend/cmd/healthcheck v1.0.0-beta.1
 	github.com/joho/godotenv v1.4.0
 )
 
@@ -21,6 +20,5 @@ require (
 	go.uber.org/zap v1.21.0 // indirect
 )
 
-replace github.com/JohnVicke/klask-backend/cmd/helloworld => ./cmd/helloworld
 
 replace github.com/JohnVicke/klask-backend/cmd/healthcheck => ./cmd/healthcheck

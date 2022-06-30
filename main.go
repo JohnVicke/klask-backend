@@ -6,7 +6,6 @@ import (
 
 	"github.com/GoogleCloudPlatform/functions-framework-go/funcframework"
 	"github.com/JohnVicke/klask-backend/cmd/healthcheck"
-	"github.com/JohnVicke/klask-backend/cmd/helloworld"
 	"github.com/joho/godotenv"
 )
 
@@ -22,7 +21,6 @@ func init() {
 }
 
 func main() {
-	funcframework.RegisterHTTPFunction("/hello-world", helloworld.HelloWorld)
 	funcframework.RegisterHTTPFunction("/healthcheck", healthcheck.HealthCheck)
 
 	port := "8080"
