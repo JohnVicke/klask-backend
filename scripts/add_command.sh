@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # verify input arguments
+current_dir=$(pwd)
 command_name=$1
 
 if [ $# -lt 1 ]; then
@@ -31,6 +32,8 @@ fi
 
 echo "Boostrapping command $command_name..."
 cd ./cmd && mkdir $dir_name && cd $dir_name
+
+echo "- v1.0.0-beta.1: Initializing $command_name function" > .version
 
 go mod init github.com/JohnVicke/cmd/$dir_name
 go get github.com/stretchr/testify/assert
@@ -80,5 +83,7 @@ func Test$command_name(t *testing.T) {
 	assert.Equal(t, http.StatusOK, rr.Code)
 }
 " >> "$dir_name"_test.go
+
+
 
 echo "Finished bootstrapping command $command_name, cd into ./cmd/$dir_name to start coding"

@@ -22,3 +22,5 @@ require (
 replace github.com/JohnVicke/klask-backend/cmd/helloworld => ./cmd/helloworld
 
 replace github.com/JohnVicke/klask-backend/cmd/healthcheck => ./cmd/healthcheck
+
+replace github.com/JohnVicke/klask-backend/cmd/rickard => ./cmd/rickard
