@@ -7,7 +7,7 @@ import (
 )
 
 func init () {
-	log.Println("Healthcheck initialized")
+	log.Println("Healthcheck initialized!")
 }
 
 // HealthCheck is a function that returns a string.
