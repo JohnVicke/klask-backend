@@ -8,8 +8,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-
-
 func TestHealthCheck(t *testing.T) {
 	req, err:= http.NewRequest("GET", "/healthcheck", nil)
 	if err != nil {
