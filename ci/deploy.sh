@@ -7,18 +7,17 @@ files=("$@")
 VERSION=v1.0.0-beta.1
 
 env_vars_array=(
-  "VAR1=${VAR1}" 
-  "name=${VERSION}"
+  "version=${VERSION}"
 )
 
-# TODO: Filter for main .go file
 
 printf -v joined '%s,' "${env_vars_array[@]}"
 env_vars=${joined%,}
 
 for file in "${files[@]}"
 do
-  entry_point="$(grep -oP '(?<=func )\w+' $file)"
+  dir_name=$(basename "$file" .go)
+  entry_point="$(grep -oP '(?<=func )\w+' $file | grep -i $dir_name)"
   name=${entry_point,}
 
   echo "Deploying function $entry_point to gcloud..."
