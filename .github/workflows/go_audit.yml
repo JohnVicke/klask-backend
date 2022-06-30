@@ -3,6 +3,9 @@ name: GO Audit
 on:
   pull_request:
     branches: [master]
+    paths:
+      - "cmd/**"
+      - "pkg/**"
 
 jobs:
   build:
