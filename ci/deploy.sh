@@ -24,8 +24,10 @@ do
   gcloud functions deploy $name \
     --entry-point $entry_point \
     --set-env-vars $env_vars \
+    --region europe-north1-a \
     --runtime go113 \
     --allow-unauthenticated \
+    --verbosity debug \
     --trigger-http
 
 done
