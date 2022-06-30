@@ -11,6 +11,7 @@ env_vars_array=(
 )
 
 
+workdir=${PWD}
 printf -v joined '%s,' "${env_vars_array[@]}"
 env_vars=${joined%,}
 
@@ -21,10 +22,7 @@ do
   name=${entry_point,}
 
   echo "Deploying function $entry_point to gcloud..."
-
-  echo "entry_point: $entry_point"
-  echo "name: $name"
-  echo "env_vars: $env_vars"
+  cd $(dirname $file)
 
   gcloud functions deploy $name \
     --entry-point $entry_point \
@@ -33,5 +31,7 @@ do
     --allow-unauthenticated \
     --verbosity debug \
     --trigger-http
+
+  cd $workdir 
 
 done
