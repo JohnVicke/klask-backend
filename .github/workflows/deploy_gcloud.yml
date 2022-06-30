@@ -1,4 +1,4 @@
-name: Deploy to gcloud
+name: Deploy modified functions gcloud
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   changes:
-    name: changes
+    name: 🕵️ Check for file changes
     runs-on: ubuntu-latest
     outputs:
       cmd: ${{ steps.filter.outputs.cmd }}
