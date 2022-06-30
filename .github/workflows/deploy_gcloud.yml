@@ -42,9 +42,6 @@ jobs:
       - name: "Set up Cloud SDK"
         uses: "google-github-actions/setup-gcloud@v0"
 
-      - name: "Use gcloud CLI"
-        run: "gcloud info"
-
       - name: Deploy modified functions
         shell: bash
         run: ./ci/deploy.sh ${{ needs.changes.outputs.cmd_files }}

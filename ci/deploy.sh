@@ -4,7 +4,7 @@ echo "Using shell: $SHELL"
 
 files=("$@")
 
-VERSION=1.0.0
+VERSION=v1.0.0-beta.1
 
 env_vars_array=(
   "VAR1=${VAR1}" 
@@ -22,6 +22,10 @@ do
   name=${entry_point,}
 
   echo "Deploying function $entry_point to gcloud..."
+
+  echo "entry_point: $entry_point"
+  echo "name: $name"
+  echo "env_vars: $env_vars"
 
   gcloud functions deploy $name \
     --entry-point $entry_point \
