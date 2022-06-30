@@ -11,6 +11,8 @@ env_vars_array=(
   "VAR2=${VAR1}"
 )
 
+# TODO: Filter for main .go file
+
 printf -v joined '%s,' "${env_vars_array[@]}"
 env_vars=${joined%,}
 
