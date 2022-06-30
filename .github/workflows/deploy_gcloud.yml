@@ -1,0 +1,47 @@
+name: Deploy to gcloud
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  changes:
+    name: changes
+    runs-on: ubuntu-latest
+    outputs:
+      cmd: ${{ steps.filter.outputs.cmd }}
+      pkg: ${{ steps.filter.outputs.pkg }}
+      cmd_files: ${{ steps.filter.outputs.cmd_files }}
+      pkg_files: ${{ steps.filter.outputs.pkg_files }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Path Filter task and Execute
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          list-files: shell
+          filters: |
+            pkg:
+              - 'pkg/**'
+            cmd:
+              - 'cmd/**'
+
+  deploy-to-cloud:
+    needs: changes
+    if: ${{ needs.changes.outputs.cmd == 'true' }}
+    name: 🚀 Deploy to gcloud
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - id: "auth"
+        uses: "google-github-actions/auth@v0"
+        with:
+          credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
+
+      - name: "Set up Cloud SDK"
+        uses: "google-github-actions/setup-gcloud@v0"
+
+      - name: Deploy modified functions
+        shell: bash
+        run: ./ci/deploy.sh ${{ needs.changes.outputs.cmd_files }}

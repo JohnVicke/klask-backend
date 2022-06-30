@@ -1,0 +1,15 @@
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+**/vendor
+
+*.test
+
+*.out
+
+# Go workspace file
+go.work
+.env
+klask-backend
