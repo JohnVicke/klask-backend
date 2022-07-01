@@ -4,6 +4,7 @@ about: "I have a suggestion (and may want to implement it \U0001F60E)!"
 title: ''
 labels: "\U0001F680 feature"
 assignees: ''
+project: JohnVicke/projects/1
 
 ---
 
