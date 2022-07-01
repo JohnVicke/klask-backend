@@ -8,6 +8,10 @@
     <a href="https://github.com/JohnVicke/klask-backend/issues">
         <img alt="GitHub issues" src="https://img.shields.io/github/issues/JohnVicke/klask-backend?style=for-the-badge">
   </a>
+    </a>
+    <a href="https://github.com/JohnVicke/klask-backend/actions/workflows/deploy_gcloud.yml">
+        <img alt="GitHub workflow status" src="https://img.shields.io/github/workflow/status/JohnVicke/klask-backend/Deploy%20modified%20functions%20gcloud?style=for-the-badge">
+  </a>
 </p>
 
 <h3 align="center">
