@@ -22,13 +22,14 @@
 
 ## Klask Project Structure
 
-| Codebase              |      Description                           |
-| :-------------------- | :-----------------------:                  |
-| [backend](backend)    | GO gcloud Serverless Functions in Firebase |
-| [app](app)            | React Native App                           |
-| [web](web)            | Svelte "Game interface"                    |
+| Codebase           |                Description                 |
+| :----------------- | :----------------------------------------: |
+| [backend](backend) | GO gcloud Serverless Functions in Firebase |
+| [app](app)         |              React Native App              |
+| [web](web)         |          Svelte "Game interface"           |
 
 ## Klask Backend Folder structure
+
 ```
 ├── ci                          // CI&CD Scripts used in github workflows and actions
 │   ├── deploy.sh
@@ -65,13 +66,49 @@
 ```
 
 ### ci
+
 Bash scripts used in the ci/cd pipelines (github workflows). Instead of writing bash straight into workflow `yml` files, import scripts from `/ci`.
 
 ### cmd
+
 Each command is a google cloud serverless function. To add a new command run the script `./scripts/add_command <NewCommandName>`. All commands should have 100% test coverage.
 
 ### pkg
-Packages used in commands. 
+
+Packages used in commands.
 
 ### scripts
+
 Developer scripts that are used to make the life of us developers easier.
+
+## Development
+
+Recommended development workflow.
+
+### Hot reload (similar to nodemon in nodejs)
+
+[Go Watch](https://github.com/mitranim/gow): missing watch mode for the go command. It's invoked exactly like go, but also watches Go files and reruns on changes.
+
+Currently requires Unix (MacOS, Linux, BSD). On Windows, runs under WSL.
+
+---
+
+**Usage in klask-backend:**
+
+setup:
+
+```sh
+go install github.com/mitranim/gow@latest
+```
+
+run main:
+
+```sh
+gow run .
+```
+
+run tests:
+
+```sh
+gow test github.com/JohnVicke/klask-backend/...
+```
