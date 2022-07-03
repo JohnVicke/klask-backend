@@ -7,10 +7,9 @@ run_tests_in_subdirs () {
     if [ -d $dir ]; then
       cd $dir
       go test ./... -v -cover
-      return_code=$?
-      if [ $return_code -ne 0 ]; then
+      if [ $? -ne 0 ]; then
         echo "Tests in $dir failed"
-        exit $return_code
+        exit $?
       fi
       cd ..
       printf "\n"
