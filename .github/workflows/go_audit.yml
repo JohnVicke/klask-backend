@@ -42,7 +42,8 @@ jobs:
         run: |
           ./ci/run_tests.sh
           if [ $? -ne 0 ]; then
-            exit 1
+            echo "exit code: $?"
+            exit $?
           fi
 
   lint:
