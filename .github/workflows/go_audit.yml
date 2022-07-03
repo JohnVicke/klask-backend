@@ -39,7 +39,11 @@ jobs:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/use-go-18
       - shell: bash
-        run: ./ci/run_tests.sh
+        run: |
+          ./ci/run_tests.sh
+          if [ $? -ne 0 ]; then
+            exit 1
+          fi
 
   lint:
     name: 🧹 Lint
