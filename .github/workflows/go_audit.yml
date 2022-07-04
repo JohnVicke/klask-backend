@@ -9,35 +9,43 @@ on:
 
 jobs:
   build:
+    name: 🛠️ Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/use-go-18
-      - name: Verify deps
-        shell: bash
-        run: go mod verify
+      - run: go build -v ./...
 
-      - name: 🛠️ Build
-        shell: bash
-        run: go build -v ./...
+  verify-deps:
+    name: 👀 Verify
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/use-go-18
+      - run: go mod verify
 
   vet:
     runs-on: ubuntu-latest
+    name: 🧐 Vet
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/use-go-18
-
-      - name: 🧐 Vet
-        run: go vet ./...
+      - run: go vet ./...
 
   test:
+    name: 🧪 Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: ./.github/actions/use-go-18
-
-      - name: 🧪 Test
-        run: go test -race -vet=off github.com/JohnVicke/klask-backend/...
+      - shell: bash
+        run: |
+          ./ci/run_tests.sh
+          echo "exit code: $?"
+          if [ $? -ne 0 ]; then
+            echo "exit code: $?"
+            exit $?
+          fi
 
   lint:
     name: 🧹 Lint

@@ -35,10 +35,7 @@ cd ./cmd && mkdir $dir_name && cd $dir_name
 
 echo "- v1.0.0-beta.1: Initializing $command_name function" > .version
 
-go mod init github.com/JohnVicke/cmd/$dir_name
-go get github.com/stretchr/testify/assert
-go get -u
-go mod tidy
+go mod init github.com/JohnVicke/klask-backend/cmd/$dir_name
 
 echo "package $dir_name" >> $dir_name.go
 
@@ -84,6 +81,6 @@ func Test$command_name(t *testing.T) {
 }
 " >> "$dir_name"_test.go
 
-
+go mod tidy
 
 echo "Finished bootstrapping command $command_name, cd into ./cmd/$dir_name to start coding"
